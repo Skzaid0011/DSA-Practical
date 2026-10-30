@@ -1,26 +1,27 @@
 #include <iostream>
 using namespace std;
-
+// Node class to create a new node
 class node {
 public:
     int data;
     node *next;
-
+// Constructor to initialize node
     node(int x) {
         data = x;
         next = NULL;
     }
 };
-
+// Stack class using linked list
 class stack {
 private:
-    node *top;
+    node *top;   // Points to the top node
 
 public:
+// Constructor to initialize an empty stack
     stack() {
         top = NULL;
     }
-
+// Function to check whether stack is empty
     int empty() {
         if (top == NULL) {
             return 1;
@@ -28,13 +29,13 @@ public:
             return 0;
         }
     }
-
+// Function to insert an element into the stack
     void push(int x) {
         node *p = new node(x);
         p->next = top;
         top = p;
     }
-
+ // Function to remove the top element
     int pop(void) {
         int x = top->data;
         node *p = top;
@@ -42,11 +43,11 @@ public:
         delete p;
         return x;
     }
-
+// Function to return the top element
     int peek() {
         return top->data;
     }
-
+// Function to display stack elements
     void display() {
         node *q = top;
         while (q != NULL) {
@@ -58,8 +59,8 @@ public:
 
 int main() {
     int x;
-    stack s;
-
+    stack s;  // Create stack object
+ // Insert elements into the stack
     s.push(99);
     s.push(81);
     s.push(33);
@@ -67,8 +68,8 @@ int main() {
     s.push(10);
     s.push(20);
     
-    s.display();
-
+    s.display();   // Display stack elements
+// Remove the top element if stack is not empty
     if (!s.empty()) {
         x = s.pop();
         cout << endl << "Removed" << x;
