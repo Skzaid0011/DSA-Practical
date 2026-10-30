@@ -1,13 +1,14 @@
 #include <iostream>
 using namespace std;
 
-// Node class for doubly linked list
+// Node class to store data and pointers
 class Node {
 public:
     int data;
-    Node* prev;
-    Node* next;
+    Node* prev;  // Points to previous node
+    Node* next;  // Points to next node
 
+ // Constructor to initialize a new node
     Node(int val) {
         data = val;
         prev = nullptr;
@@ -15,17 +16,18 @@ public:
     }
 };
 
-// Doubly linked list class
+// Class to implement Doubly Linked List
 class DoublyLinkedList {
 private:
     Node* head;
 
 public:
+ // Constructor to initialize an empty list
     DoublyLinkedList() {
         head = nullptr;
     }
 
-    // Insert node at the end
+// Function to insert a node at the end
     void insert(int val) {
         Node* p = new Node(val); // p is used for new node
         if (head == nullptr) {
@@ -40,11 +42,11 @@ public:
         }
     }
 
-    // Delete node by value
+    // Function to delete a node by value
     void remove(int val) {
         Node *p,*q;
                q = head;
-
+ // Delete the first node
                 if (q->data == val) {
                 p = head;
                 head=head->next;
@@ -52,7 +54,7 @@ public:
                 delete p;
                 return;
                 }
-                
+         // Search and delete the required node       
                 while (q->next != NULL) {
             if (q->next->data == val) {
                 p = q->next;
@@ -69,7 +71,7 @@ public:
         cout << "Value " << val << " not found in the list.\n";
     }
 
-    // Display list forward
+// Function to display list in forward direction
     void displayForward() {
         Node* q = head;
         cout << "Forward: ";
@@ -80,7 +82,7 @@ public:
         cout << "NULL\n";
     }
 
-    // Display list backward
+   // Function to display list in backward direction  
     void displayBackward() {
         Node* q = head;
         if (q == nullptr) {
@@ -88,7 +90,7 @@ public:
             return;
         }
 
-        // Move to the tail
+        
         while (q->next != nullptr) {
             q = q->next;
         }
@@ -102,19 +104,22 @@ public:
     }
 };
 
-// Main function to test the doubly linked list
+
 int main() {
     DoublyLinkedList list;
-
+// Insert elements into the list
     list.insert(10);
     list.insert(20);
     list.insert(30);
-    list.displayForward();   // Output: Forward: 10 <-> 20 <-> 30 <-> NULL
-    list.displayBackward();  // Output: Backward: 30 <-> 20 <-> 10 <-> NULL
+    
+    list.displayForward();   // Display in forward direction 
+    list.displayBackward();  // Display in backward direction
+ 
 
-    list.remove(20);
-    list.displayForward();   // Output: Forward: 10 <-> 30 <-> NULL
-    list.displayBackward();  // Output: Backward: 30 <-> 10 <-> NULL
+    list.remove(20);  // Delete node containing 20
+   
+    list.displayForward();   // Display updated list
+    list.displayBackward();  // Display updated list in reverse
 
     return 0;
 }
