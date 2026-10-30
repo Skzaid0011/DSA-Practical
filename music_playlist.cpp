@@ -3,14 +3,14 @@
 
 using namespace std;
 
-// Node class modified to represent a song
+// Node class to store song details
 class Node {
 public:
     string songTitle;
     string artistName;
-    Node* prev; // prev pointer to navigate to the previous song
-    Node* next; // next pointer to navigate to the next song
-
+    Node* prev;  // Points to previous song
+    Node* next;  // Points to next song
+// Constructor to initialize a new song node
     Node(string title, string artist) {
         songTitle = title;
         artistName = artist;
@@ -18,13 +18,14 @@ public:
         next = nullptr;
     }
 };
-
+// Class to manage the music playlist
 class MusicPlaylistManager {
 private:
-    Node* head;    // head points to the first node (first song) in the playlist
-    Node* current; // current points to the currently selected/playing song
+    Node* head;     // Points to the first song
+    Node* current;  // Points to the current song
 
 public:
+// Constructor to initialize an empty playlist
     MusicPlaylistManager() {
         head = nullptr;
         current = nullptr;
@@ -206,7 +207,7 @@ int main() {
     int choice;
     string title, artist;
     int reps;
-
+// Display menu until the user chooses Exit
     do {
         cout << "\n--- Music Playlist Manager ---\n";
         cout << "1. Add Song\n";
@@ -222,7 +223,7 @@ int main() {
         cout << "11. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
-        cin.ignore(); // clear input buffer
+        cin.ignore();  // Clear input buffer
 
         switch (choice) {
             case 1:
