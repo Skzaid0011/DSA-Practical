@@ -1,34 +1,35 @@
 #include <iostream>
 using namespace std;
 
-const int MAX = 5;
-
+const int MAX = 5; // Maximum size of the queue
+// Class to implement Queue
 class queue
 {
 private:
-    int a[MAX];
-    int front;
-    int rear;
+    int a[MAX];  // Array to store queue elements
+    int front;   // Points to the first element
+    int rear;    // Points to the last element
 
 public:
+ // Constructor: Initializes an empty queue
     queue()
     {
         front = -1;
         rear = -1;
     }
-
+  // Function to check whether the queue is empty
     int empty(void)
     {
         if (front == -1 && rear == -1)
         {
-            return 1;
+            return 1; // Queue is empty
         }
         else
         {
             return 0;
         }
     }
-
+// Function to check whether the queue is full
     int full(void)
     {
         if (rear == MAX - 1)
@@ -40,7 +41,7 @@ public:
             return 0;
         }
     }
-
+// Function to insert an element into the queue
     void enqueue(int x)
     {
         if (full())
@@ -61,7 +62,7 @@ public:
 
         a[rear] = x;
     }
-
+ // Function to remove an element from the queue
     int dequeue(void)
     {
         if (empty())
@@ -84,7 +85,7 @@ public:
 
         return x;
     }
-
+ // Function to display the front element
     int peek(void)
     {
         if (empty())
@@ -116,7 +117,7 @@ int main()
 {
     int x;
     queue q;
-
+// Insert five elements into the queue
     q.enqueue(95);
     q.enqueue(90);
     q.enqueue(20);
