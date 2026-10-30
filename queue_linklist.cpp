@@ -1,31 +1,31 @@
 #include <iostream>
 using namespace std;
-
+// Node class to create a new node
 class node
 {
 public:
     int data;
     node *next;
-
+// Constructor to initialize node
     node(int x)
     {
         data = x;
         next = NULL;
     }
 };
-
+// Queue class using linked list
 class queue
 {
 private:
-    node *front;
-    node *rear;
+    node *front;  // Points to the first node
+    node *rear;   // Points to the last node
 
 public:
-    queue()
+    queue()    // Constructor to initialize an empty queue
     {
         front = rear = NULL;
     }
-
+ // Function to check whether queue is empty
     int empty(void)
     {
         if (front == NULL)
@@ -37,7 +37,7 @@ public:
             return 0;
         }
     }
-
+ // Function to return the front element
     int peek(void)
     {
         if (empty())
@@ -48,7 +48,7 @@ public:
 
         return front->data;
     }
-
+// Function to insert an element at the rear
     void enqueue(int x)
     {
         node *p = new node(x);
@@ -64,7 +64,7 @@ public:
             rear = p;
         }
     }
-
+ // Function to remove an element from the front
     int dequeue(void)
     {
         if (empty())
@@ -87,7 +87,7 @@ public:
 
         return x;
     }
-
+// Function to display all queue elements
     void display(void)
     {
         node *q = front;
@@ -106,7 +106,7 @@ int main()
 {
     int x;
     queue q;
-
+ // Insert elements into the queue
     q.enqueue(27);
     q.enqueue(34);
     q.enqueue(42);
@@ -115,14 +115,14 @@ int main()
     q.enqueue(70);
 
     q.display();
-
+// Remove the front element if queue is not empty
     if (!q.empty())
     {
         x = q.dequeue();
         cout << "\nRemoved: " << x;
     }
 
-    q.display();
+    q.display();   // Display remaining elements
 
     x = q.peek();
     cout << "\nFront element is: " << x;
